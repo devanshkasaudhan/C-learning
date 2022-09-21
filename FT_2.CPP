@@ -17,7 +17,7 @@ public:
     myclass(){};
     myclass(T1 a,T2 b,T3 c);
 };
-
+template<class T1,class T2, class T3>
 myclass<T1,T2,T3>::myclass(T1 a,T2 b,T3 c)
 {
     f1 = a;
