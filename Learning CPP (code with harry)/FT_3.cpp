@@ -4,8 +4,8 @@ using namespace std;
 
 template<class T>
 void display(vector<T> &v){
-    for (int i = 0; i <  sizeof(v); i++)
-    // for (int i = 0; i <  v.size(); i++)
+    // for (int i = 0; i <  sizeof(v); i++) this makes a initial vector of 12 elements which changes according to lenghth afterwords
+    for (int i = 0; i <  v.size(); i++)
     {
         cout << v[i] << "  ";
     }
@@ -21,7 +21,7 @@ int main(){
     {
         cout << "Enter the element ";
         cin >> element;
-        // a1[i] = element ;
+        // a1[i] = element ; we have to use class functions to work with vector unless they show error or wrong results 
         a1.push_back(element); 
     }
     
