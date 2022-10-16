@@ -7,50 +7,60 @@ string rtrim(const string &);
 vector<string> split(const string &);
 
 /*
- * Complete the 'simpleArraySum' function below.
+ * Complete the 'diagonalDifference' function below.
  *
  * The function is expected to return an INTEGER.
- * The function accepts INTEGER_ARRAY ar as parameter.
+ * The function accepts 2D_INTEGER_ARRAY arr as parameter.
  */
 
-int simpleArraySum(vector<int> ar) {
-    // int n,y;
-    // cin>>n;
-    // for (int i=0; i<n; i++) {
-    // cin>>y;
-    // ar.push_back(y);
-    // }
-    int n=ar.size();
-    int x=0;
-    for (int i=0; i < n; i++) {
-    x=x+ar[i];
+int diagonalDifference(vector<vector<int>> arr) {
+    int n=arr.size();
+    int sum1=0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++){
+            if (i==j) {
+                    sum1 = sum1 +arr[i][j];
+                }
+            if ((i+j)==(n-1)) {
+                    sum1=sum1-arr[i][j];
+                }
+        }
     }
-    return x;
+    if (sum1<0) {
+        sum1=(-sum1);
+        }
+    
+    return sum1;
+
 }
 
 int main()
 {
     ofstream fout(getenv("OUTPUT_PATH"));
 
-    string ar_count_temp;
-    getline(cin, ar_count_temp);
+    string n_temp;
+    getline(cin, n_temp);
 
-    int ar_count = stoi(ltrim(rtrim(ar_count_temp)));
+    int n = stoi(ltrim(rtrim(n_temp)));
 
-    string ar_temp_temp;
-    getline(cin, ar_temp_temp);
+    vector<vector<int>> arr(n);
 
-    vector<string> ar_temp = split(rtrim(ar_temp_temp));
+    for (int i = 0; i < n; i++) {
+        arr[i].resize(n);
 
-    vector<int> ar(ar_count);
+        string arr_row_temp_temp;
+        getline(cin, arr_row_temp_temp);
 
-    for (int i = 0; i < ar_count; i++) {
-        int ar_item = stoi(ar_temp[i]);
+        vector<string> arr_row_temp = split(rtrim(arr_row_temp_temp));
 
-        ar[i] = ar_item;
+        for (int j = 0; j < n; j++) {
+            int arr_row_item = stoi(arr_row_temp[j]);
+
+            arr[i][j] = arr_row_item;
+        }
     }
 
-    int result = simpleArraySum(ar);
+    int result = diagonalDifference(arr);
 
     fout << result << "\n";
 

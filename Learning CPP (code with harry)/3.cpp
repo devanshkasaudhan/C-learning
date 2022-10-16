@@ -1,5 +1,5 @@
-include<iostream>
-using namespace std;#
+#include<iostream>
+using namespace std;
 // int d=43;
 int main(){
 //     int a,b,c,d;

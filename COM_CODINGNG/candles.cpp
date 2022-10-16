@@ -7,50 +7,50 @@ string rtrim(const string &);
 vector<string> split(const string &);
 
 /*
- * Complete the 'simpleArraySum' function below.
+ * Complete the 'birthdayCakeCandles' function below.
  *
  * The function is expected to return an INTEGER.
- * The function accepts INTEGER_ARRAY ar as parameter.
+ * The function accepts INTEGER_ARRAY candles as parameter.
  */
 
-int simpleArraySum(vector<int> ar) {
-    // int n,y;
-    // cin>>n;
-    // for (int i=0; i<n; i++) {
-    // cin>>y;
-    // ar.push_back(y);
-    // }
-    int n=ar.size();
-    int x=0;
-    for (int i=0; i < n; i++) {
-    x=x+ar[i];
+int birthdayCakeCandles(vector<int> candles) {
+    int max=0;
+    for(int x:candles){
+        if (candles[x]>max) {
+        max=candles[x];
+        }
     }
-    return x;
+    int ret=0;
+    for(int y:candles){
+        if(candles[y]==max)
+        ret++;
+    }
+    return ret;
 }
 
 int main()
 {
     ofstream fout(getenv("OUTPUT_PATH"));
 
-    string ar_count_temp;
-    getline(cin, ar_count_temp);
+    string candles_count_temp;
+    getline(cin, candles_count_temp);
 
-    int ar_count = stoi(ltrim(rtrim(ar_count_temp)));
+    int candles_count = stoi(ltrim(rtrim(candles_count_temp)));
 
-    string ar_temp_temp;
-    getline(cin, ar_temp_temp);
+    string candles_temp_temp;
+    getline(cin, candles_temp_temp);
 
-    vector<string> ar_temp = split(rtrim(ar_temp_temp));
+    vector<string> candles_temp = split(rtrim(candles_temp_temp));
 
-    vector<int> ar(ar_count);
+    vector<int> candles(candles_count);
 
-    for (int i = 0; i < ar_count; i++) {
-        int ar_item = stoi(ar_temp[i]);
+    for (int i = 0; i < candles_count; i++) {
+        int candles_item = stoi(candles_temp[i]);
 
-        ar[i] = ar_item;
+        candles[i] = candles_item;
     }
 
-    int result = simpleArraySum(ar);
+    int result = birthdayCakeCandles(candles);
 
     fout << result << "\n";
 
